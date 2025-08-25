@@ -1,16 +1,16 @@
 <?php
 
+use App\Http\Controllers\PostControllercls;
 use Illuminate\Support\Facades\Route;
-use PHPUnit\Framework\Constraint\Constraint;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-Route::get('/about', function () {
-    return view('about');
-});
+// Route::get('/about', function () {
+//     return view('about');
+// });
 
 
 // http verbs
@@ -118,5 +118,33 @@ Route::get('/about', function () {
 Route::fallback(function () {
     return view('errors.404');
 });
+
+// Route::get('/posts', [PostControllercls::class, 'index'])->name('posts.index');
+// Route::get('/posts/create', [PostControllercls::class, 'create'])->name('posts.create');
+// Route::post('/posts', [PostControllercls::class, 'store'])->name('posts.store');
+// Route::get('/posts/{$id}', [PostControllercls::class, 'show'])->name('posts.show');
+// Route::get('/posts/{$id}/edit', [PostControllercls::class, 'edit'])->name('posts.edit');
+// Route::put('/posts/{$id}', [PostControllercls::class, 'update'])->name('posts.update');
+// Route::delete('/posts/{$id}', [PostControllercls::class, 'destory'])->name('posts.destory');
+
+// alternative for above 7 routes
+// Route::resource('/posts', PostControllercls::class);
+
+// Route::resource('/posts', PostControllercls::class)->only(['index', 'show']);
+
+// Route::resource('/posts', PostControllercls::class)->except(['destory', 'update']);
+
+
+// grouping postController routes
+Route::controller(PostControllercls::class)->group(function (){
+    Route::get('/posts', 'index')->name('posts.index');
+    Route::get('/posts/create', 'create')->name('posts.create');
+    Route::post('/posts', 'store')->name('posts.store');
+    Route::get('/posts/{id}', 'show')->name('posts.show');
+    Route::get('/posts/{id}/edit', 'edit')->name('posts.edit');
+    Route::put('/posts/{id}', 'update')->name('posts.update');
+    Route::delete('/posts/{id}', 'destroy')->name('posts.destroy');
+});
+
 
 
