@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\PostControllercls;
 use Illuminate\Support\Facades\Route;
 
@@ -135,16 +136,19 @@ Route::fallback(function () {
 // Route::resource('/posts', PostControllercls::class)->except(['destory', 'update']);
 
 
-// grouping postController routes
-Route::controller(PostControllercls::class)->group(function (){
-    Route::get('/posts', 'index')->name('posts.index');
-    Route::get('/posts/create', 'create')->name('posts.create');
-    Route::post('/posts', 'store')->name('posts.store');
-    Route::get('/posts/{id}', 'show')->name('posts.show');
-    Route::get('/posts/{id}/edit', 'edit')->name('posts.edit');
-    Route::put('/posts/{id}', 'update')->name('posts.update');
-    Route::delete('/posts/{id}', 'destroy')->name('posts.destroy');
-});
+// // grouping postController routes
+// Route::controller(PostControllercls::class)->group(function (){
+//     Route::get('/posts', 'index')->name('posts.index');
+//     Route::get('/posts/create', 'create')->name('posts.create');
+//     Route::post('/posts', 'store')->name('posts.store');
+//     Route::get('/posts/{id}', 'show')->name('posts.show');
+//     Route::get('/posts/{id}/edit', 'edit')->name('posts.edit');
+//     Route::put('/posts/{id}', 'update')->name('posts.update');
+//     Route::delete('/posts/{id}', 'destroy')->name('posts.destroy');
+// });
 
 
+
+Route::get('/chirps', [ChirpController::class, 'index'])->name('chirps.index');
+Route::post('/chirps', [ChirpController::class, 'store'])->name('chirps.store');
 

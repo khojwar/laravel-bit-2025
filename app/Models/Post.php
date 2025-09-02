@@ -13,11 +13,16 @@ class Post extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = [
+    // protected $fillable = [
+    //     'title',
+    //     'content',
+    //     'user_id',
+    //     'slug',
+    // ];
+
+        protected $fillable = [
         'title',
         'content',
-        'user_id',
-        'slug',
     ];
 
     protected $casts = [

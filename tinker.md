@@ -1,6 +1,10 @@
 ## Eloquent ORM Basics
 
 ```
+php artisan tinker
+```
+
+```
 // import Models
 > use App\Models\User;
 > use App\Models\Post;
