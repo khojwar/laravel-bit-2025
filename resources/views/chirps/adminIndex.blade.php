@@ -3,30 +3,48 @@
 
 @section('content')
 <div class="max-w-4xl mx-auto mt-8 space-y-8">
-    <!-- logoutbutton -->
-    <div>
-        <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit" class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Logout</button>
-    </form>
-    </div>
 
-    <div>
-        <!-- {{ $userCount }} users are registered. -->
-        
-        <a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $userCount }}</h5>
-        <p class="font-normal text-gray-700 dark:text-gray-400">Total User</p>
-        </a>
 
-    </div>
 
 
     <div>
         <h1 class="text-3xl font-bold text-center text-blue-700 dark:text-gray-50">Admin Chirps</h1>
-        <p class="text-center">Welcome, {{ $user->name }} (Admin)</p>
+        <p class="text-center dark:text-gray-50">Welcome, {{ $user->name }} (Admin)</p>
 
+        <div class="flex justify-center w-full gap-8">
+                <div class="mt-8 text-center w-1/3">
+                    <!-- {{ $userCount }} users are registered. -->
+                    
+                    <a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $totalCount }}</h5>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Total</p>
+                    </a>
+
+                </div>
+                <div class="mt-8 text-center w-1/3">
+                    <!-- {{ $userCount }} users are registered. -->
+                    
+                    <a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $adminCount }}</h5>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Admins</p>
+                    </a>
+
+                </div>
+                <div class="mt-8 text-center w-1/3">
+                    <!-- {{ $userCount }} users are registered. -->
+                    
+                    <a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $userCount }}</h5>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Users</p>
+                    </a>
+                </div>
+        </div>
+
+        <h1 class="text-2xl font-bold text-center text-blue-700 dark:text-gray-50 mt-16">List of Users and their Chirps</h1>
         <!-- <ul class="mt-8 space-y-4">
             @foreach ($chirps as $chirp)
                 <li>

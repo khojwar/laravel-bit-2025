@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blog</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+@section('title', 'Welcome')
 
-<body class="bg-gray-100 text-gray-900 flex flex-col items-center justify-center min-h-screen">
-    <h1 class="text-3xl font-bold">Welcome to my blog</h1>
-    <p class="mt-2">This is a simple blog application built with Laravel.</p>
-</body>
-
-</html>
+@section('content')
+    <div class="bg-gray-100 text-gray-900 flex flex-col items-center justify-center min-h-screen">
+        <h1 class="text-3xl font-bold">Chirps</h1>
+        <p class="mt-2">This is a simple chirp application built with Laravel.</p>
+        <div>
+            <img src="{{ asset('uploads/market.jpg') }}" alt="Chirps Image" class="mt-4 h-[60vh] w-auto object-cover rounded-lg shadow-lg">
+        </div>
+    </div>
+@endsection

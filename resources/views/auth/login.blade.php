@@ -4,11 +4,9 @@
 
 @section('content')
 
-<div class="">
+<div class="w-full max-w-sm mx-auto">
     @if ($errors->any())
     @foreach ($errors->all() as $error)
-            <div id="toast-success" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-sm dark:text-gray-400 dark:bg-gray-800" role="alert">
-
             <div id="toast-danger" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-sm dark:text-gray-400 dark:bg-gray-800" role="alert">
                 <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -28,7 +26,7 @@
     @endif
 </div>
 
-<div class="mt-10">
+<div class="w-full max-w-sm mx-auto mt-36">
     <form class="max-w-sm mx-auto" method="POST" action="{{ route('login') }}">
         @csrf
         <div class="mb-5">
@@ -42,6 +40,10 @@
 
         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
         </form>
+
+        <div class="mt-4 text-center">
+            <a href="{{ route('register') }}" class="dark:text-gray-100">Don't have an account? Register here</a>
+        </div>  
 </div>
 
 @endsection

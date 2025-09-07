@@ -19,8 +19,10 @@ class ChirpController extends Controller
     public function adminIndex() {
         $chirps = Chirp::latest()->get();
         $user = Auth::user();
-        $userCount = User::count();
-        return view('chirps.adminIndex', compact('chirps', 'user', 'userCount'));
+        $totalCount = User::count();
+        $userCount = User::where('role', 'user')->count();
+        $adminCount = User::where('role', 'admin')->count();
+        return view('chirps.adminIndex', compact('chirps', 'user', 'userCount', 'adminCount', 'totalCount'));
     }
 
     public function store(Request $request){
