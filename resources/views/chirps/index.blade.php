@@ -4,9 +4,15 @@
 
 @section('content')
 
+<div>
+  <form action="{{ route('logout') }}" method="post">
+    @csrf
+    <button type="submit" class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Logout</button>
+  </form>
+</div>
 
 <div class="mt-8">
-  <h1 class="text-3xl font-bold text-center text-blue-700">Chirps</h1>
+  <h1 class="text-3xl font-bold text-center text-blue-700 dark:text-gray-50">Chirps</h1>
   <form action="{{ route('chirps.store') }}" method="POST" class="max-w-2xl mx-auto px-12">
     @csrf
     <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>

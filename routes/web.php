@@ -170,6 +170,17 @@ Route::middleware(['auth'])->group(function (){
 });
 
 
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/chirps', [ChirpController::class, 'adminIndex'])->name('chirps.adminIndex');
+    Route::post('/admin/chirps', [ChirpController::class, 'adminStore'])->name('chirps.adminStore');
+
+    Route::get('/admin/chirps/{id}/edit', [ChirpController::class, 'adminEdit'])->name('chirps.adminEdit');
+    Route::put('/admin/chirps/{id}', [ChirpController::class, 'adminUpdate'])->name('chirps.adminUpdate');
+
+    Route::delete('/admin/chirps/{id}', [ChirpController::class, 'adminDestroy'])->name('chirps.adminDestroy');
+});
+
+
 
 
 

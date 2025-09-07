@@ -10,11 +10,18 @@ use Illuminate\Support\Facades\Auth;
 class ChirpController extends Controller
 {
     public function index() {
-        $chirps = Chirp::latest()->get();
-        // $user = User::first();
+        
         $user = Auth::user();
+        $chirps = $user->chirps->sortByDesc('created_at');
         return view('chirps.index', compact('chirps', 'user'));
     } 
+
+    public function adminIndex() {
+        $chirps = Chirp::latest()->get();
+        $user = Auth::user();
+        $userCount = User::count();
+        return view('chirps.adminIndex', compact('chirps', 'user', 'userCount'));
+    }
 
     public function store(Request $request){
         // validation
@@ -25,6 +32,7 @@ class ChirpController extends Controller
         // save
         Chirp::create([
             'chirp' => $request->chirp,
+            'user_id' => Auth::id(),
         ]);
 
         return redirect()->route('chirps.index');
